@@ -7,16 +7,15 @@ describe('TA-fullstack-vanillajs tests', () => {
     return request(app)
       .post('/api/v1/words')
       .send({
-        word: 'New word',
-        word_definition: 'New Word Definition'
+        word: 'car',
       })
       .then(res => {
         expect(res.body).toEqual({
           id: expect.any(String),
-          word: 'New word',
-          word_definition: 'New Word Definition'
+          word: 'car',
+          word_definition: 'a road vehicle, typically with four wheels, powered by an internal-combustion engine and able to carry a small number of people.'
         });
-      });
+      })
   });
 
   it('should get all the words from the database', () => {
@@ -24,9 +23,8 @@ describe('TA-fullstack-vanillajs tests', () => {
       .get('/api/v1/words')
       .then(res => {
         expect(res.body).toEqual(expect.arrayContaining([
-          { id: expect.any(String), word: 'word 0', word_definition: 'word def 0' },
-          { id: expect.any(String), word: 'word 1', word_definition: 'word def 1' },
-          { id: expect.any(String), word: 'word 2', word_definition: 'word def 2' }
+          { id: expect.any(String), word: 'cat', word_definition: 'a small domesticated carnivorous mammal with soft fur, a short snout, and retractile claws. It is widely kept as a pet or for catching mice, and many breeds have been developed.' },
+          { id: expect.any(String), word: 'car', word_definition: 'a road vehicle, typically with four wheels, powered by an internal-combustion engine and able to carry a small number of people.' },
         ])
         );
       });
